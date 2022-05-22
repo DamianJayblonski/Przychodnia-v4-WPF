@@ -24,8 +24,11 @@ namespace Przychodnia_v4
         public MainWindow()
         {
             InitializeComponent();
+           /* PacjentContext db = new PacjentContext();  
+        var p = from Pacjent in db.Pacjents select Pacjent;
+           */
         }
-
+         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DodajEdytuj win2 = new DodajEdytuj();

@@ -23,7 +23,10 @@ namespace Przychodnia_v2
             DbPath = System.IO.Path.Join(path,"Przychodnia\\Przychodnia01.db");
 
         }
+        
+        
 
+        
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
             Console.WriteLine(DbPath);
