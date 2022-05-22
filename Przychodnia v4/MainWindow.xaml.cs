@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Przychodnia_v2;
 
 namespace Przychodnia_v4
 {
@@ -23,6 +24,12 @@ namespace Przychodnia_v4
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DodajEdytuj win2 = new DodajEdytuj();
+            win2.Show();
         }
     }
 }

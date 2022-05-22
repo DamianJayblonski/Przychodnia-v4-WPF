@@ -7,12 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,62,26,268" SelectionChanged="ListBox_SelectionChanged"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,62,26,268"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,217,381,44"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=10
             }" Margin="435,217,202,44"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="611,217,26,44"/>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,34,0,0" VerticalAlignment="Top"/>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,192,0,0" VerticalAlignment="Top"/>
