@@ -37,7 +37,7 @@ namespace Przychodnia_v4
         {
             using (var db = new PacjentContext())
             {
-
+                
                 db.Add(new Pacjent()
                 {
                     Nazwisko = BBNazwisko,

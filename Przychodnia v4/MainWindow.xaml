@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:Przychodnia_v4"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <Binding RelativeSource="{RelativeSource Self}"/>
+    </Window.DataContext>
     <Grid>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,217,381,44"/>
+        <ListBox d:ItemsSource="{Binding}" Margin="26,217,381,44"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=10
             }" Margin="435,217,202,44"/>
         <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="611,217,26,44"/>
@@ -19,7 +22,23 @@
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,192,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="26,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Wizyty"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pacjenci"/></TextBlock>
-        <DataGrid x:Name="DataView1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,59,26,268"/>
+        <DataGrid x:Name="categoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
+                    ItemsSource="{Binding Pacjenci}"  Margin="26,59,26,268" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="IdColumn" Binding="{Binding ID}"
+                                    Header="Id" Width="25"/>
+                <DataGridTextColumn x:Name="imieColumn" Binding="{Binding Imie}"
+                                    Header="Imie" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="nazwiskoColumn" Binding="{Binding Nazwisko}"
+                                    Header="Nazwisko" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="AdresColumn" Binding="{Binding Adres}"
+                                    Header="Adres" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="PeselColumn" Binding="{Binding Pesel}"
+                                    Header="Pesel" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="PlecColumn" Binding="{Binding Plec}"
+                                    Header="Plec" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>
