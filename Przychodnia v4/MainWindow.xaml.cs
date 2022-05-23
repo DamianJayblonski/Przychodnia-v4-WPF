@@ -21,7 +21,9 @@ namespace Przychodnia_v4
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Pacjent SelectedPacjent { get; set; }
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
+        public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
 
         public MainWindow()
         {
@@ -29,16 +31,31 @@ namespace Przychodnia_v4
             
         }
          
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Dodaj_Button(object sender, RoutedEventArgs e)
         {
-            DodajEdytuj win2 = new DodajEdytuj();
+            DodajEdytuj win2 = new DodajEdytuj(0);
             win2.Show();
+            
+        }
+        private void Edytuj_Button(object sender, RoutedEventArgs e)
+        {
+            if (SelectedPacjent != null)
+            {
+                DodajEdytuj win2 = new DodajEdytuj(SelectedPacjent.ID);
+                win2.Show();
+            }
+
+        }
+        private void Usun_Button(object sender, RoutedEventArgs e)
+        {
+
         }
 
-       
 
 
 
-        
+
+
+
     }
 }

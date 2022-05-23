@@ -19,7 +19,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="97,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Adres"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="103,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Płeć:"/></TextBlock>
         <TextBox HorizontalAlignment="Left" Margin="134,165,0,0" TextWrapping="Wrap" Text="{Binding Path=BBPlec}" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Anuluj" HorizontalAlignment="Left" Margin="113,230,0,0" VerticalAlignment="Top"/>
+        <Button Content="Anuluj" HorizontalAlignment="Left" Margin="113,230,0,0" VerticalAlignment="Top" Click="closeButton_Click"/>
         <Button Content="Akceptuj" HorizontalAlignment="Left" Margin="210,230,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="134,30,0,0" VerticalAlignment="Top"/>
 

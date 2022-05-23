@@ -19,15 +19,27 @@ namespace Przychodnia_v4
                    list.Add(pacjent);
                 }
                 return list;
-
-
             }
-        
-        
-        
-        
-        
         }
+        public static List<Rozpoznanie> GetRozpoznianie()
+        {
+            var list = new List<Rozpoznanie>();
+            using (var db = new PacjentContext())
+            {
+                foreach (var rozpoznanie in db.Rozpoznanies)
+                {
+                    list.Add(rozpoznanie);
+                }
+                return list;
+            }
+        }
+
+
+
+
+
+
+
     }
     
 }
