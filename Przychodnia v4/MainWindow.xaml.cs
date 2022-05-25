@@ -28,14 +28,14 @@ namespace Przychodnia_v4
         public MainWindow()
         {
             InitializeComponent();
-            
+
         }
-         
+
         private void Dodaj_Button(object sender, RoutedEventArgs e)
         {
             DodajEdytuj win2 = new DodajEdytuj(0);
             win2.Show();
-            
+
         }
         private void Edytuj_Button(object sender, RoutedEventArgs e)
         {
@@ -48,14 +48,30 @@ namespace Przychodnia_v4
         }
         private void Usun_Button(object sender, RoutedEventArgs e)
         {
-
+            categoryDataGrid.ItemsSource = null;
+            Pacjenci = Data.GetPacjents();
+            categoryDataGrid.ItemsSource = Pacjenci;
         }
 
-
-
-
-
-
-
+        private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           RozpoznanieDataGrid.ItemsSource = null;
+            if (SelectedPacjent != null)
+            {
+                Rozpoznania.Clear();
+                using (var db = new PacjentContext())
+                {
+                    foreach (var rozpoznanie in db.Rozpoznanies)
+                    {
+                        if (rozpoznanie.PacjentID == SelectedPacjent.ID)
+                        {
+                            Rozpoznania.Add(rozpoznanie);
+                        }
+                    }
+                }
+            }
+            RozpoznanieDataGrid.ItemsSource = Rozpoznania;
+            // RozpoznanieDataGrid.Row.Clear();
+        }
     }
 }

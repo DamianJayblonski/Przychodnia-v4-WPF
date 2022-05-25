@@ -16,14 +16,14 @@
         <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="642,217,26,44"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top" Click="Dodaj_Button"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,34,0,0" VerticalAlignment="Top" Click="Edytuj_Button"/>
-        <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Click="Usun_Button"/>
+        <Button Content="Refresh" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Click="Usun_Button"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,192,0,0" VerticalAlignment="Top"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,192,0,0" VerticalAlignment="Top"/>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,192,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="26,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Wizyty"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pacjenci"/></TextBlock>
-        <DataGrid x:Name="categoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
-                    ItemsSource="{Binding Pacjenci}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,59,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="112">
+        <DataGrid x:Name="categoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" SelectionChanged="Pacjent_SelectionChanged"
+                    ItemsSource="{Binding Pacjenci , Mode=TwoWay}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,59,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="112">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="IdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
