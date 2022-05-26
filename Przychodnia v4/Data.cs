@@ -21,14 +21,29 @@ namespace Przychodnia_v4
                 return list;
             }
         }
-        public static List<Rozpoznanie> GetRozpoznianie()
+        public static List<Wizyta> GetRozpoznianie(int PacjentIDDJ)
         {
-            var list = new List<Rozpoznanie>();
+            var list = new List<Wizyta>();
+            var Wizytka = new Wizyta();
             using (var db = new PacjentContext())
             {
                 foreach (var rozpoznanie in db.Rozpoznanies)
                 {
-                    list.Add(rozpoznanie);
+                    if (rozpoznanie.PacjentID == PacjentIDDJ || PacjentIDDJ == 0)
+                    {
+                        Wizytka.ID = rozpoznanie.ID;
+                        Wizytka.PacjentID = rozpoznanie.PacjentID;
+                        Wizytka.Nazwa = rozpoznanie.Nazwa;
+                        Wizytka.RodzajZabieguID = rozpoznanie.RodzajZabieguID;
+                        Wizytka.Data = rozpoznanie.Data;
+                        foreach (var zabieg in db.RodzajZabiegus)
+                        {
+                            if(zabieg.ID == rozpoznanie.RodzajZabieguID)
+                                Wizytka.NazwaZabiegu = zabieg.Nazwa;
+                        }
+                        
+                        list.Add(Wizytka);
+                    }
                 }
                 return list;
             }

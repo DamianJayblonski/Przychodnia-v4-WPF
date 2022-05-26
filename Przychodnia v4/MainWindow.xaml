@@ -13,8 +13,8 @@
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top" Click="Dodaj_Button"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,34,0,0" VerticalAlignment="Top" Click="Edytuj_Button"/>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Click="Usun_Button"/>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,192,0,0" VerticalAlignment="Top"/>
-        <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,192,0,0" VerticalAlignment="Top"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,192,0,0" VerticalAlignment="Top" Click="Dodaj_Wizyte_Button"/>
+        <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,192,0,0" VerticalAlignment="Top" Click="Edytuj_Wizyte_Button"/>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,192,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="26,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Wizyty"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pacjenci"/></TextBlock>
@@ -38,7 +38,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="RozpoznanieDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
-                    ItemsSource="{Binding Rozpoznania}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,217,400,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
+                    ItemsSource="{Binding Rozpoznania}" SelectedItem="{Binding SelectedWizyta, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,217,400,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173" SelectionChanged="RozpoznanieDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RozpoznanieIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
@@ -46,7 +46,7 @@
                                     Header="Nazwa" Width="150"/>
                 <DataGridTextColumn x:Name="RozpoznanieDataColumn" Binding="{Binding Data}"
                                     Header="Data" Width="100"/>
-                <DataGridTextColumn x:Name="RodzajZabieguIDColumn" Binding="{Binding RodzajZabieguID}"
+                <DataGridTextColumn x:Name="RodzajZabieguIDColumn" Binding="{Binding NazwaZabiegu}"
                                     Header="Nazwa Zabiegu" Width="100"/>
 
             </DataGrid.Columns>
@@ -56,14 +56,18 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="WypisIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
-            <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Rezultat}"
+                <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Rezultat}"
                                     Header="Rezultat" Width="150"/>
-            <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding DataLeczeniaOd}"
+                <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding DataLeczeniaOd}"
                                     Header="LeczenieOd" Width="100"/>
-            <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding DataLeczeniaDo}"
+                <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding DataLeczeniaDo}"
                                     Header="LeczenieDo" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="419,192,0,0" VerticalAlignment="Top"/>
+        <Button Content="Edytuj" HorizontalAlignment="Left" Margin="460,192,0,0" VerticalAlignment="Top"/>
+        <Button Content="Usuń" HorizontalAlignment="Left" Margin="502,192,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="419,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Historia choroby"/></TextBlock>
 
     </Grid>
 </Window>

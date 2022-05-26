@@ -9,18 +9,19 @@
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="133,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Imię:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="106,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Nazwisko:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="75,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Data urodze"/><Run Language="pl-pl" Text="n"/><Run Text="ia:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="129,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pesel:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="75,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Data urodze"/><Run Language="pl-pl" Text="n"/><Run Text="ia:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="129,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pesel:"/></TextBlock>
         <TextBox HorizontalAlignment="Left" Margin="161,87,0,0" TextWrapping="Wrap" Text="{Binding Path=BBImie}" VerticalAlignment="Top" Width="129"/>
         <TextBox HorizontalAlignment="Left" Margin="161,108,0,0" TextWrapping="Wrap" Text="{Binding Path=BBNazwisko}" VerticalAlignment="Top" Width="129"/>
-        <TextBox HorizontalAlignment="Left" Margin="161,128,0,0" TextWrapping="Wrap" Text="{Binding Path=BBData}" VerticalAlignment="Top" Width="129"/>
-        <TextBox HorizontalAlignment="Left" Margin="161,150,0,0" TextWrapping="Wrap" Text="{Binding Path=BBPesel}" VerticalAlignment="Top" Width="129"/>
-        <TextBox HorizontalAlignment="Left" Margin="161,171,0,0" TextWrapping="Wrap" Text="{Binding Path=BBAdres}" VerticalAlignment="Top" Width="129"/>
-        <TextBlock HorizontalAlignment="Left" Margin="126,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Adres"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="132,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Płeć:"/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Margin="161,191,0,0" TextWrapping="Wrap" Text="{Binding Path=BBPlec}" VerticalAlignment="Top" Width="129"/>
+        <TextBox HorizontalAlignment="Left" Margin="161,129,0,0" TextWrapping="Wrap" Text="{Binding Path=BBPesel}" VerticalAlignment="Top" Width="129"/>
+        <TextBox HorizontalAlignment="Left" Margin="161,150,0,0" TextWrapping="Wrap" Text="{Binding Path=BBAdres}" VerticalAlignment="Top" Width="129"/>
+        <TextBlock HorizontalAlignment="Left" Margin="126,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Adres"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="132,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Płeć:"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="161,170,0,0" TextWrapping="Wrap" Text="{Binding Path=BBPlec}" VerticalAlignment="Top" Width="129"/>
         <Button Content="Anuluj" HorizontalAlignment="Left" Margin="113,230,0,0" VerticalAlignment="Top" Click="closeButton_Click"/>
         <Button Content="Akceptuj" HorizontalAlignment="Left" Margin="210,230,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="161,191,0,0" VerticalAlignment="Top" Width="129" Height="23" SelectedDate="{Binding Path=BBData}"/>
+        <TextBlock Margin="98,30,98,0" TextWrapping="Wrap" Text="Dodaj/Edytuj pacjenta" VerticalAlignment="Top" Height="32" FontSize="18"/>
 
     </Grid>
 </Window>
