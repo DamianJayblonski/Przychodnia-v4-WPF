@@ -34,6 +34,19 @@ namespace Przychodnia_v4
             }
         }
 
+        public static List<Wypis> GetWypis()
+        {
+            var list = new List<Wypis>();
+            using (var db = new PacjentContext())
+            {
+                foreach (var wypis in db.Wypiss)
+                {
+                    list.Add(wypis);
+                }
+                return list;
+            }
+        }
+
 
 
 

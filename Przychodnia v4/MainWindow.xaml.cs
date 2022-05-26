@@ -25,6 +25,7 @@ namespace Przychodnia_v4
         public Pacjent SelectedPacjent { get; set; }
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
         public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
+        public List<Wypis> Wypisy { get; set; } = Data.GetWypis();
         public MainWindow()
         {
             InitializeComponent();
@@ -80,9 +81,11 @@ namespace Przychodnia_v4
             private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {
                 RozpoznanieDataGrid.ItemsSource = null;
-                if (SelectedPacjent != null)
+                WypisDataGrid.ItemsSource = null;
+            if (SelectedPacjent != null)
                 {
                     Rozpoznania.Clear();
+                    Wypisy.Clear();
                     using (var db = new PacjentContext())
                     {
                         foreach (var rozpoznanie in db.Rozpoznanies)
@@ -92,11 +95,19 @@ namespace Przychodnia_v4
                                 Rozpoznania.Add(rozpoznanie);
                             }
                         }
-                    }
+                        foreach (var wypis in db.Wypiss)
+                        {
+                            if (wypis.PacjentID == SelectedPacjent.ID)
+                            {
+                                Wypisy.Add(wypis);
+                            }
+                        }
+                }
                 }
                 RozpoznanieDataGrid.ItemsSource = Rozpoznania;
-                // RozpoznanieDataGrid.Row.Clear();
-            }
+                WypisDataGrid.ItemsSource = Wypisy;
+            // RozpoznanieDataGrid.Row.Clear();
+        }
             public void Refresh()
             {
                 categoryDataGrid.ItemsSource = null;

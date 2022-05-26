@@ -56,11 +56,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="WypisIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
-            <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Nazwa}"
+            <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Rezultat}"
                                     Header="Rezultat" Width="150"/>
-            <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding Data}"
+            <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding DataLeczeniaOd}"
                                     Header="LeczenieOd" Width="100"/>
-            <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding RodzajZabieguID}"
+            <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding DataLeczeniaDo}"
                                     Header="LeczenieDo" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>

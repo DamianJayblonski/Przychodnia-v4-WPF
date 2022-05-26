@@ -33,10 +33,11 @@ namespace Przychodnia_v4
         }
 
         private void Tak_Click(object sender, RoutedEventArgs e)
-        {   using (var db = new PacjentContext()) {
-            var SelectedPacjent = db.Pacjents.Find(PacjentID);
-            if (SelectedPacjent != null)
+        {   using (var db = new PacjentContext()) 
             {
+            var SelectedPacjent = db.Pacjents.Find(PacjentID);
+                if (SelectedPacjent != null)
+                {
                
                
                     var Pacjent = db.Pacjents.Find(SelectedPacjent.ID);
@@ -44,7 +45,7 @@ namespace Przychodnia_v4
                     db.SaveChanges();
 
 
-            }
+                }
 
 
 
