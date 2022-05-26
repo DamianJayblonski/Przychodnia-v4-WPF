@@ -49,7 +49,16 @@ namespace Przychodnia_v4
         }
         private void Usun_Button(object sender, RoutedEventArgs e)
         {
-            if (SelectedPacjent != null)
+
+            UsunWindow win2 = new UsunWindow(SelectedPacjent.ID, this);
+            win2.Show();
+
+
+
+
+
+
+            /* if (SelectedPacjent != null)
             {
                 using (var db = new PacjentContext())
                 {
@@ -65,7 +74,7 @@ namespace Przychodnia_v4
                 categoryDataGrid.ItemsSource = null;
                 Pacjenci = Data.GetPacjents();
                 categoryDataGrid.ItemsSource = Pacjenci;
-            }
+            } */
         }
 
             private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)

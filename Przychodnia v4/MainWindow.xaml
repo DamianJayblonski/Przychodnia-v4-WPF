@@ -34,7 +34,7 @@
                 <DataGridTextColumn x:Name="PlecColumn" Binding="{Binding Plec}"
                                     Header="Plec" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="DataColumn" Binding="{Binding DataUrodzenia}"
-                                    Header="Data Urodzenia" Width="SizeToHeader"/>
+                                    Header="Data Urodzenia" Width="140"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="RozpoznanieDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"

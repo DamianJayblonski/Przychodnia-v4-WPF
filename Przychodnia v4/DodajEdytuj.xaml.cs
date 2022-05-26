@@ -30,6 +30,7 @@ namespace Przychodnia_v4
         public string BBAdres { get; set; }
         public string BBPlec { get; set; }
         public string BBPesel { get; set; }
+        public DateTime BBData { get; set; }
 
         public MainWindow parentWindow;
 
@@ -56,6 +57,7 @@ namespace Przychodnia_v4
                 BBPesel = SelectedPacjent.Pesel;
                 BBAdres = SelectedPacjent.Adres;
                 BBPlec = SelectedPacjent.Plec;
+                BBData = SelectedPacjent.DataUrodzenia;
             }
                
         }
@@ -72,6 +74,7 @@ namespace Przychodnia_v4
                     SelectedPacjent.Pesel = BBPesel;
                     SelectedPacjent.Adres = BBAdres;
                     SelectedPacjent.Plec = BBPlec;
+                    SelectedPacjent.DataUrodzenia = BBData;
                     db.SaveChanges();
                    
                  
@@ -83,7 +86,7 @@ namespace Przychodnia_v4
                         Nazwisko = BBNazwisko,
                         Imie = BBImie,
                         Adres = BBAdres,
-                        DataUrodzenia = new DateTime(1978, 1, 18, 0, 0, 0),
+                        DataUrodzenia = BBData,
                         Plec = BBPlec,
                         Pesel = BBPesel
                     });
