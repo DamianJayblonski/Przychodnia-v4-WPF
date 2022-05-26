@@ -10,13 +10,9 @@
         <Binding RelativeSource="{RelativeSource Self}"/>
     </Window.DataContext>
     <Grid>
-
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=10
-            }" Margin="464,217,174,44"/>
-        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="642,217,26,44"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top" Click="Dodaj_Button"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,34,0,0" VerticalAlignment="Top" Click="Edytuj_Button"/>
-        <Button Content="Refresh" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Click="Usun_Button"/>
+        <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Click="Usun_Button"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,192,0,0" VerticalAlignment="Top"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,192,0,0" VerticalAlignment="Top"/>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,192,0,0" VerticalAlignment="Top"/>
@@ -42,7 +38,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="RozpoznanieDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
-                    ItemsSource="{Binding Rozpoznania}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,217,353,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
+                    ItemsSource="{Binding Rozpoznania}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,217,400,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RozpoznanieIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
@@ -51,10 +47,21 @@
                 <DataGridTextColumn x:Name="RozpoznanieDataColumn" Binding="{Binding Data}"
                                     Header="Data" Width="100"/>
                 <DataGridTextColumn x:Name="RodzajZabieguIDColumn" Binding="{Binding RodzajZabieguID}"
-                                    Header="ID Zabiegu" Width="70"/>
-                <DataGridTextColumn x:Name="RozpoznaniePacjentIDColumn" Binding="{Binding PacjentID}"
-                                    Header="ID Pacjenta" Width="SizeToHeader"/>
-               
+                                    Header="Nazwa Zabiegu" Width="100"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="WypisDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
+                    ItemsSource="{Binding Wypisy}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="419,217,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="WypisIdColumn" Binding="{Binding ID}"
+                                    Header="Id" Width="25"/>
+            <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Nazwa}"
+                                    Header="Rezultat" Width="150"/>
+            <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding Data}"
+                                    Header="LeczenieOd" Width="100"/>
+            <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding RodzajZabieguID}"
+                                    Header="LeczenieDo" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
 

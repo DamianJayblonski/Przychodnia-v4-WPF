@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,6 @@ namespace Przychodnia_v4
         public Pacjent SelectedPacjent { get; set; }
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
         public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace Przychodnia_v4
 
         private void Dodaj_Button(object sender, RoutedEventArgs e)
         {
-            DodajEdytuj win2 = new DodajEdytuj(0);
+            DodajEdytuj win2 = new DodajEdytuj(0, this);
             win2.Show();
 
         }
@@ -41,37 +41,59 @@ namespace Przychodnia_v4
         {
             if (SelectedPacjent != null)
             {
-                DodajEdytuj win2 = new DodajEdytuj(SelectedPacjent.ID);
+                DodajEdytuj win2 = new DodajEdytuj(SelectedPacjent.ID, this);
+                //  win2.parentWindow = this;
                 win2.Show();
             }
 
         }
         private void Usun_Button(object sender, RoutedEventArgs e)
         {
-            categoryDataGrid.ItemsSource = null;
-            Pacjenci = Data.GetPacjents();
-            categoryDataGrid.ItemsSource = Pacjenci;
-        }
-
-        private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           RozpoznanieDataGrid.ItemsSource = null;
             if (SelectedPacjent != null)
             {
-                Rozpoznania.Clear();
                 using (var db = new PacjentContext())
                 {
-                    foreach (var rozpoznanie in db.Rozpoznanies)
+                    var Pacjent = db.Pacjents.Find(SelectedPacjent.ID);
+                    db.Pacjents.Remove(Pacjent);
+                    db.SaveChanges();
+
+
+                }
+
+
+
+                categoryDataGrid.ItemsSource = null;
+                Pacjenci = Data.GetPacjents();
+                categoryDataGrid.ItemsSource = Pacjenci;
+            }
+        }
+
+            private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            {
+                RozpoznanieDataGrid.ItemsSource = null;
+                if (SelectedPacjent != null)
+                {
+                    Rozpoznania.Clear();
+                    using (var db = new PacjentContext())
                     {
-                        if (rozpoznanie.PacjentID == SelectedPacjent.ID)
+                        foreach (var rozpoznanie in db.Rozpoznanies)
                         {
-                            Rozpoznania.Add(rozpoznanie);
+                            if (rozpoznanie.PacjentID == SelectedPacjent.ID)
+                            {
+                                Rozpoznania.Add(rozpoznanie);
+                            }
                         }
                     }
                 }
+                RozpoznanieDataGrid.ItemsSource = Rozpoznania;
+                // RozpoznanieDataGrid.Row.Clear();
             }
-            RozpoznanieDataGrid.ItemsSource = Rozpoznania;
-            // RozpoznanieDataGrid.Row.Clear();
+            public void Refresh()
+            {
+                categoryDataGrid.ItemsSource = null;
+                Pacjenci = Data.GetPacjents();
+                categoryDataGrid.ItemsSource = Pacjenci;
+
+            }
         }
-    }
-}
+    } 

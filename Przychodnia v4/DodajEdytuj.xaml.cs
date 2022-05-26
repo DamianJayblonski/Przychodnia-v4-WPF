@@ -31,7 +31,9 @@ namespace Przychodnia_v4
         public string BBPlec { get; set; }
         public string BBPesel { get; set; }
 
-        public DodajEdytuj(int PacjentIDDJ)
+        public MainWindow parentWindow;
+
+        public DodajEdytuj(int PacjentIDDJ, MainWindow parent)
         {
 
             this.PacjentID = PacjentIDDJ;
@@ -40,6 +42,7 @@ namespace Przychodnia_v4
                 Wypelnij();
             }
             DataContext = this;
+            parentWindow = parent;
             InitializeComponent();
         }
 
@@ -70,6 +73,8 @@ namespace Przychodnia_v4
                     SelectedPacjent.Adres = BBAdres;
                     SelectedPacjent.Plec = BBPlec;
                     db.SaveChanges();
+                   
+                 
                 }
                 else
                 {
@@ -85,7 +90,7 @@ namespace Przychodnia_v4
                     db.SaveChanges();
                 }
             }
-
+            parentWindow.Refresh();
             Close();
         }
         private void closeButton_Click(object sender, RoutedEventArgs e) =>
