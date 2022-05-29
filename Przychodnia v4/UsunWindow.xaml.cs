@@ -24,11 +24,13 @@ namespace Przychodnia_v4
         public MainWindow parentWindow;
         public int PacjentID { get; set; }
         public int WizytaID { get; set; }
+        public int HistoriaID { get; set; }
         //przechwytywanie PacjentID oraz WizytaID
-        public UsunWindow(int PacjentIDDJ,int WizytaIDDJ, MainWindow parent)
+        public UsunWindow(int PacjentIDDJ,int WizytaIDDJ,int HistoriaIDDJ, MainWindow parent)
         {
             this.PacjentID = PacjentIDDJ;
             this.WizytaID = WizytaIDDJ;
+            this.HistoriaID = HistoriaIDDJ;
             parentWindow = parent;
             InitializeComponent();
         }
@@ -54,6 +56,17 @@ namespace Przychodnia_v4
 
                     var Wizyta = db.Rozpoznanies.Find(SelectedWizyta.ID);
                     db.Rozpoznanies.Remove(Wizyta);
+                    db.SaveChanges();
+
+
+                }
+            var SelectedHistoria = db.Wypiss.Find(HistoriaID);
+                if (SelectedHistoria != null && SelectedHistoria.ID > 0)
+                {
+
+
+                    var Historia = db.Wypiss.Find(SelectedHistoria.ID);
+                    db.Wypiss.Remove(Historia);
                     db.SaveChanges();
 
 

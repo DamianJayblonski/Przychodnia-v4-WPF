@@ -67,7 +67,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="419,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Historia choroby"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="419,192,0,0" VerticalAlignment="Top" Click="Dodaj_Historie_Button"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="460,192,0,0" VerticalAlignment="Top" Click="Edytuj_Historie_Button"/>
-        <Button Content="Usuń" HorizontalAlignment="Left" Margin="502,192,0,0" VerticalAlignment="Top"/>
+        <Button Content="Usuń" HorizontalAlignment="Left" Margin="502,192,0,0" VerticalAlignment="Top" Click="Usun_Historie_Button"/>
 
     </Grid>
 </Window>

@@ -87,14 +87,20 @@ namespace Przychodnia_v4
         private void Usun_Button(object sender, RoutedEventArgs e)
         {
 
-            UsunWindow win2 = new UsunWindow(SelectedPacjent.ID,0, this);
+            UsunWindow win2 = new UsunWindow(SelectedPacjent.ID,0,0, this);
             win2.Show();
         }
 
         private void Usun_Wizyte_Button(object sender, RoutedEventArgs e)
         {
 
-            UsunWindow win2 = new UsunWindow(0,SelectedWizyta.ID, this);
+            UsunWindow win2 = new UsunWindow(0,SelectedWizyta.ID,0, this);
+            win2.Show();
+        }
+        private void Usun_Historie_Button(object sender, RoutedEventArgs e)
+        {
+
+            UsunWindow win2 = new UsunWindow(0,0, SelectedHistoria.ID, this);
             win2.Show();
         }
         //funkcja przechwytująca zmianę pacjenta w gridzie pacjentów i wypisujaca w innych gridach wizyty i historie choroby pacjenta
