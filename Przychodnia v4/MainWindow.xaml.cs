@@ -27,6 +27,7 @@ namespace Przychodnia_v4
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
         public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
         public List<Wypis> Wypisy { get; set; } = Data.GetWypis();
+        public List<RodzajZabiegu> Zabiegi { get; set; } = Data.GetZabieg();
         public MainWindow()
         {
             InitializeComponent();

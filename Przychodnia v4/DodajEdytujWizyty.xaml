@@ -16,7 +16,7 @@
         <Button Content="Anuluj" HorizontalAlignment="Left" Margin="113,230,0,0" VerticalAlignment="Top" Click="closeButton_Click"/>
         <Button Content="Akceptuj" HorizontalAlignment="Left" Margin="210,230,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <DatePicker Name="DatePicker" HorizontalAlignment="Left" Margin="161,111,0,0" VerticalAlignment="Top" Width="129" Height="23" SelectedDate="{Binding Path=DataZabiegu}"/>
-        <ComboBox HorizontalAlignment="Left" Margin="162,142,0,0" VerticalAlignment="Top" Width="128"/>
+        <ComboBox Loaded="ComboBox_Loaded" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Margin="162,142,0,0" VerticalAlignment="Top" Width="128"/>
 
 
 

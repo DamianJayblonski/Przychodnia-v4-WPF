@@ -52,6 +52,19 @@ namespace Przychodnia_v4
             }
         }
 
+        public static List<RodzajZabiegu> GetZabieg()
+        {
+            var list = new List<RodzajZabiegu>();
+            using (var db = new PacjentContext())
+            {
+                foreach (var zabieg in db.RodzajZabiegus)
+                {
+                    list.Add(zabieg);
+                }
+                return list;
+            }
+        }
+
 
 
 

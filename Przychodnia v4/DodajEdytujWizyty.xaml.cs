@@ -81,7 +81,7 @@ namespace Przychodnia_v4
                     {
                         PacjentID = this.PacjentID,
                         Nazwa = NazwaWizyty,
-                        RodzajZabieguID = 1, //this.ZabieguID,
+                        RodzajZabieguID = this.ZabieguID,
                         Data = DataZabiegu
                        
                         
@@ -96,5 +96,39 @@ namespace Przychodnia_v4
 
             Close();
 
+        public void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> list = new List<string>();
+            using (var db = new PacjentContext())
+            {
+                foreach (var zabieg in db.RodzajZabiegus)
+                {
+                    list.Add(zabieg.Nazwa);
+                }
+            }
+            var combo = sender as ComboBox;
+            combo.ItemsSource = list;
+            combo.SelectedIndex = 0;
+        }
+
+        public void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+           
+            var selectedcomboitem = sender as ComboBox;
+            string name = selectedcomboitem.SelectedItem as string;
+            using (var db = new PacjentContext())
+            {
+                foreach (var zabieg in db.RodzajZabiegus)
+                {
+                    if (name == zabieg.Nazwa)
+                        ZabieguID = zabieg.ID;
+                        
+                }
+            }
+            
+
+
+
+        }
     }
 }
