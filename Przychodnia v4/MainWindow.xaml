@@ -15,7 +15,7 @@
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,34,0,0" VerticalAlignment="Top" Click="Usun_Button"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="26,192,0,0" VerticalAlignment="Top" Click="Dodaj_Wizyte_Button"/>
         <Button Content="Edytuj" HorizontalAlignment="Left" Margin="67,192,0,0" VerticalAlignment="Top" Click="Edytuj_Wizyte_Button"/>
-        <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,192,0,0" VerticalAlignment="Top"/>
+        <Button Content="Usuń" HorizontalAlignment="Left" Margin="109,192,0,0" VerticalAlignment="Top" Click="Usun_Wizyte_Button"/>
         <TextBlock HorizontalAlignment="Left" Margin="26,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Wizyty"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pacjenci"/></TextBlock>
         <DataGrid x:Name="categoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" SelectionChanged="Pacjent_SelectionChanged"
@@ -27,14 +27,14 @@
                                     Header="Imie" Width="50"/>
                 <DataGridTextColumn x:Name="nazwiskoColumn" Binding="{Binding Nazwisko}"
                                     Header="Nazwisko" Width="80"/>
-                <DataGridTextColumn x:Name="AdresColumn" Binding="{Binding Adres}"
-                                    Header="Adres" Width="200"/>
                 <DataGridTextColumn x:Name="PeselColumn" Binding="{Binding Pesel}"
                                     Header="Pesel" Width="80"/>
                 <DataGridTextColumn x:Name="PlecColumn" Binding="{Binding Plec}"
                                     Header="Plec" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="DataColumn" Binding="{Binding DataUrodzenia}"
                                     Header="Data Urodzenia" Width="140"/>
+                <DataGridTextColumn x:Name="AdresColumn" Binding="{Binding Adres}"
+                                    Header="Adres" Width="200"/>
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="RozpoznanieDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
@@ -42,28 +42,32 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RozpoznanieIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
-                <DataGridTextColumn x:Name="NazwaColumn" Binding="{Binding Nazwa}"
-                                    Header="Nazwa" Width="150"/>
-                <DataGridTextColumn x:Name="RozpoznanieDataColumn" Binding="{Binding Data}"
-                                    Header="Data" Width="100"/>
                 <DataGridTextColumn x:Name="RodzajZabieguIDColumn" Binding="{Binding RodzajZabiegu.Nazwa}"
                                     Header="Nazwa Zabiegu" Width="100"/>
+                <DataGridTextColumn x:Name="RozpoznanieDataColumn" Binding="{Binding Data}"
+                                    Header="Data" Width="100"/>
+                <DataGridTextColumn x:Name="NazwaColumn" Binding="{Binding Nazwa}"
+                                    Header="Notatki" Width="150"/>
 
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="WypisDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
-                    ItemsSource="{Binding Wypisy}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="419,217,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
+                    ItemsSource="{Binding Wypisy}" SelectedItem="{Binding SelectedHistoria, Mode=TwoWay}" VerticalAlignment="Top" Margin="419,217,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="WypisIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
-            <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Rezultat}"
-                                    Header="Rezultat" Width="150"/>
-            <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding DataLeczeniaOd}"
+                <DataGridTextColumn x:Name="LeczenieOdColumn" Binding="{Binding DataLeczeniaOd}"
                                     Header="LeczenieOd" Width="100"/>
-            <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding DataLeczeniaDo}"
+                <DataGridTextColumn x:Name="LeczenieDoColumn" Binding="{Binding DataLeczeniaDo}"
                                     Header="LeczenieDo" Width="100"/>
+                <DataGridTextColumn x:Name="RezultatColumn" Binding="{Binding Rezultat}"
+                                    Header="Rezultat" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
+        <TextBlock HorizontalAlignment="Left" Margin="419,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Historia choroby"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="419,192,0,0" VerticalAlignment="Top" Click="Dodaj_Historie_Button"/>
+        <Button Content="Edytuj" HorizontalAlignment="Left" Margin="460,192,0,0" VerticalAlignment="Top" Click="Edytuj_Historie_Button"/>
+        <Button Content="Usuń" HorizontalAlignment="Left" Margin="502,192,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

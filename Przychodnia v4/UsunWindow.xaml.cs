@@ -18,30 +18,42 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Przychodnia_v4
 {
-    /// <summary>
-    /// Logika interakcji dla klasy UsunWindow.xaml
-    /// </summary>
+   //delaracja zmiennych
     public partial class UsunWindow : Window
     {
         public MainWindow parentWindow;
         public int PacjentID { get; set; }
-        public UsunWindow(int PacjentIDDJ, MainWindow parent)
+        public int WizytaID { get; set; }
+        //przechwytywanie PacjentID oraz WizytaID
+        public UsunWindow(int PacjentIDDJ,int WizytaIDDJ, MainWindow parent)
         {
             this.PacjentID = PacjentIDDJ;
+            this.WizytaID = WizytaIDDJ;
             parentWindow = parent;
             InitializeComponent();
         }
-
+        //funkcja usuwania wybranych rekordow
         private void Tak_Click(object sender, RoutedEventArgs e)
         {   using (var db = new PacjentContext()) 
             {
             var SelectedPacjent = db.Pacjents.Find(PacjentID);
-                if (SelectedPacjent != null)
+                if (SelectedPacjent != null && SelectedPacjent.ID > 0)
                 {
                
                
                     var Pacjent = db.Pacjents.Find(SelectedPacjent.ID);
                     db.Pacjents.Remove(Pacjent);
+                    db.SaveChanges();
+
+
+                }
+            var SelectedWizyta = db.Rozpoznanies.Find(WizytaID);
+                if (SelectedWizyta != null && SelectedWizyta.ID > 0)
+                {
+
+
+                    var Wizyta = db.Rozpoznanies.Find(SelectedWizyta.ID);
+                    db.Rozpoznanies.Remove(Wizyta);
                     db.SaveChanges();
 
 

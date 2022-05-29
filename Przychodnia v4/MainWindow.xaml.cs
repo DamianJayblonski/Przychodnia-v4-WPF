@@ -17,13 +17,12 @@ using Przychodnia_v2;
 
 namespace Przychodnia_v4
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    //Widok strony głównej
     public partial class MainWindow : Window
-    {
+    {   //Deklaracja wszystkich list i zmiennych do sprawdzenia zaznaczonych danych w gridboxach
         public Pacjent SelectedPacjent { get; set; }
         public Rozpoznanie SelectedWizyta { get; set; }
+        public Wypis SelectedHistoria { get; set; }
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
         public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
         public List<Wypis> Wypisy { get; set; } = Data.GetWypis();
@@ -31,9 +30,8 @@ namespace Przychodnia_v4
         public MainWindow()
         {
             InitializeComponent();
-
         }
-
+        //Przyciski
         private void Dodaj_Button(object sender, RoutedEventArgs e)
         {
             DodajEdytuj win2 = new DodajEdytuj(0, this);
@@ -47,6 +45,15 @@ namespace Przychodnia_v4
             DodajEdytujWizyty win2 = new DodajEdytujWizyty(0, SelectedPacjent.ID, this);
             win2.parentWindow = this;
             win2.Show();
+            }
+        }
+        private void Dodaj_Historie_Button(object sender, RoutedEventArgs e)
+        {
+            if (SelectedPacjent != null)
+            {
+                DodajEdytujHistorie win2 = new DodajEdytujHistorie(0, SelectedPacjent.ID, this);
+                win2.parentWindow = this;
+                win2.Show();
             }
         }
         private void Edytuj_Button(object sender, RoutedEventArgs e)
@@ -64,7 +71,15 @@ namespace Przychodnia_v4
             if (SelectedWizyta != null)
             {
                 DodajEdytujWizyty win2 = new DodajEdytujWizyty(SelectedWizyta.ID, SelectedWizyta.PacjentID, this);
-                //  win2.parentWindow = this;
+                win2.Show();
+            }
+
+        }
+        private void Edytuj_Historie_Button(object sender, RoutedEventArgs e)
+        {
+            if (SelectedHistoria != null)
+            {
+                DodajEdytujHistorie win2 = new DodajEdytujHistorie(SelectedHistoria.ID, SelectedHistoria.PacjentID, this);
                 win2.Show();
             }
 
@@ -72,11 +87,18 @@ namespace Przychodnia_v4
         private void Usun_Button(object sender, RoutedEventArgs e)
         {
 
-            UsunWindow win2 = new UsunWindow(SelectedPacjent.ID, this);
+            UsunWindow win2 = new UsunWindow(SelectedPacjent.ID,0, this);
             win2.Show();
         }
 
-            private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Usun_Wizyte_Button(object sender, RoutedEventArgs e)
+        {
+
+            UsunWindow win2 = new UsunWindow(0,SelectedWizyta.ID, this);
+            win2.Show();
+        }
+        //funkcja przechwytująca zmianę pacjenta w gridzie pacjentów i wypisujaca w innych gridach wizyty i historie choroby pacjenta
+        private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {
                 RozpoznanieDataGrid.ItemsSource = null;
                 WypisDataGrid.ItemsSource = null;
@@ -109,9 +131,9 @@ namespace Przychodnia_v4
                 }
                 RozpoznanieDataGrid.ItemsSource = Rozpoznania;
                 WypisDataGrid.ItemsSource = Wypisy;
-            // RozpoznanieDataGrid.Row.Clear();
+            
             }
-
+        //Odświeżanie całej strony
         public void Refresh()
             {
             
@@ -128,5 +150,7 @@ namespace Przychodnia_v4
             Rozpoznania = Data.GetRozpoznianie();
             RozpoznanieDataGrid.ItemsSource = Rozpoznania;
         }
-        }
+
+       
+    }
     } 

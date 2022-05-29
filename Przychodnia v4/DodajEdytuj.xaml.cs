@@ -18,9 +18,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Przychodnia_v4
 {
-    /// <summary>
-    /// Logika interakcji dla klasy DodajEdytuj.xaml
-    /// </summary>
+   
     public partial class DodajEdytuj : Window
     {
  
@@ -33,7 +31,7 @@ namespace Przychodnia_v4
         public DateTime BBData { get; set; }
 
         public MainWindow parentWindow;
-
+        
         public DodajEdytuj(int PacjentIDDJ, MainWindow parent)
         {
             

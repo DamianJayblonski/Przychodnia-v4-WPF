@@ -18,9 +18,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Przychodnia_v4
 {
-    /// <summary>
-    /// Logika interakcji dla klasy DodajEdytujWizyty.xaml
-    /// </summary>
+    //deklaracja zmiennych
     public partial class DodajEdytujWizyty : Window
     {
         public int PacjentID { get; set; }
@@ -30,7 +28,7 @@ namespace Przychodnia_v4
         public DateTime DataZabiegu { get; set; }
 
         public MainWindow parentWindow;
-
+        //funkcja przelapujaca ID wizyty i ID pacjenta i wypelniajaca tabele w przypadku edycji
         public DodajEdytujWizyty(int WizytaIDDJ, int PacjentIDDJ, MainWindow parent)
         {
             WizytaID = WizytaIDDJ;
@@ -44,7 +42,7 @@ namespace Przychodnia_v4
             InitializeComponent();
            
         }
-
+        //funkcja wypelniajaca
         private void Wypelnij()
         {
             using (var db = new PacjentContext())
@@ -54,17 +52,10 @@ namespace Przychodnia_v4
                 ZabieguID = SelectedWizyta.RodzajZabieguID;
                 DataZabiegu = SelectedWizyta.Data;
                 PacjentID = SelectedWizyta.PacjentID;
-                
-
-
-
-
-
-
             }
 
         }
-
+        //akceptacja wpisanych danych guzikiem akceptuj
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new PacjentContext())
@@ -100,7 +91,7 @@ namespace Przychodnia_v4
         private void closeButton_Click(object sender, RoutedEventArgs e) =>
 
             Close();
-
+        //wczytanie opcji do comboboxa
         public void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             List<string> list = new List<string>();
@@ -115,7 +106,7 @@ namespace Przychodnia_v4
             combo.ItemsSource = list;
             combo.SelectedIndex = (this.ZabieguID - 1);
         }
-
+        //wykrycie wybranej opcji comboboxa i przekazanie jej do fukcji tworzenia rekordu
         public void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            
