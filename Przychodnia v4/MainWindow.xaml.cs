@@ -63,7 +63,7 @@ namespace Przychodnia_v4
         {
             if (SelectedWizyta != null)
             {
-                DodajEdytujWizyty win2 = new DodajEdytujWizyty(SelectedWizyta.ID, SelectedPacjent.ID, this);
+                DodajEdytujWizyty win2 = new DodajEdytujWizyty(SelectedWizyta.ID, SelectedWizyta.PacjentID, this);
                 //  win2.parentWindow = this;
                 win2.Show();
             }

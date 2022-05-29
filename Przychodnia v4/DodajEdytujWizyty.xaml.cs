@@ -32,7 +32,7 @@ namespace Przychodnia_v4
         public MainWindow parentWindow;
 
         public DodajEdytujWizyty(int WizytaIDDJ, int PacjentIDDJ, MainWindow parent)
-        {   
+        {
             WizytaID = WizytaIDDJ;
             PacjentID = PacjentIDDJ;
             if (WizytaID > 0)
@@ -54,6 +54,11 @@ namespace Przychodnia_v4
                 ZabieguID = SelectedWizyta.RodzajZabieguID;
                 DataZabiegu = SelectedWizyta.Data;
                 PacjentID = SelectedWizyta.PacjentID;
+                
+
+
+
+
 
 
             }
@@ -69,7 +74,7 @@ namespace Przychodnia_v4
 
                     var SelectedWizyta = db.Rozpoznanies.Find(WizytaID);
                     SelectedWizyta.Nazwa = this.NazwaWizyty;
-                    SelectedWizyta.RodzajZabieguID = 1;//this.ZabieguID;
+                    SelectedWizyta.RodzajZabieguID = this.ZabieguID;
                     SelectedWizyta.Data = this.DataZabiegu;
                     db.SaveChanges();
 
@@ -108,7 +113,7 @@ namespace Przychodnia_v4
             }
             var combo = sender as ComboBox;
             combo.ItemsSource = list;
-            combo.SelectedIndex = 0;
+            combo.SelectedIndex = (this.ZabieguID - 1);
         }
 
         public void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
