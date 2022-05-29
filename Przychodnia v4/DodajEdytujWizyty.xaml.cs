@@ -33,8 +33,8 @@ namespace Przychodnia_v4
 
         public DodajEdytujWizyty(int WizytaIDDJ, int PacjentIDDJ, MainWindow parent)
         {   
-            this.WizytaID = WizytaIDDJ;
-            this.PacjentID = PacjentIDDJ;
+            WizytaID = WizytaIDDJ;
+            PacjentID = PacjentIDDJ;
             if (WizytaID > 0)
             {
                 Wypelnij();
@@ -80,9 +80,9 @@ namespace Przychodnia_v4
                     db.Add(new Rozpoznanie()
                     {
                         PacjentID = this.PacjentID,
-                        Nazwa = this.NazwaWizyty,
+                        Nazwa = NazwaWizyty,
                         RodzajZabieguID = 1, //this.ZabieguID,
-                        Data = this.DataZabiegu
+                        Data = DataZabiegu
                        
                         
                     });

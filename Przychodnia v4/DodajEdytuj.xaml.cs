@@ -36,6 +36,7 @@ namespace Przychodnia_v4
 
         public DodajEdytuj(int PacjentIDDJ, MainWindow parent)
         {
+            
 
             this.PacjentID = PacjentIDDJ;
             if (PacjentID > 0)
@@ -81,8 +82,10 @@ namespace Przychodnia_v4
                 }
                 else
                 {
+                    
                     db.Add(new Pacjent()
                     {
+                        
                         Nazwisko = BBNazwisko,
                         Imie = BBImie,
                         Adres = BBAdres,
