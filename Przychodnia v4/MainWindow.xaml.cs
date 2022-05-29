@@ -89,7 +89,12 @@ namespace Przychodnia_v4
                         {
                             if (rozpoznanie.PacjentID == SelectedPacjent.ID)
                             {
-                                Rozpoznania.Add(rozpoznanie);
+                                foreach (var zabieg in db.RodzajZabiegus)
+                                {
+                                    if (zabieg.ID == rozpoznanie.RodzajZabieguID)
+                                        rozpoznanie.RodzajZabiegu.Nazwa = zabieg.Nazwa;
+                                }
+                            Rozpoznania.Add(rozpoznanie);
                             }
                         }
                         foreach (var wypis in db.Wypiss)
@@ -108,20 +113,19 @@ namespace Przychodnia_v4
 
         public void Refresh()
             {
-            RozpoznanieDataGrid.ItemsSource = null;
-            Rozpoznania = Data.GetRozpoznianie();
-            RozpoznanieDataGrid.ItemsSource = Rozpoznania;
+            
 
             categoryDataGrid.ItemsSource = null;
             Pacjenci = Data.GetPacjents();
             categoryDataGrid.ItemsSource = Pacjenci;
 
-
-
             WypisDataGrid.ItemsSource = null;
             Wypisy = Data.GetWypis();
             WypisDataGrid.ItemsSource = Wypisy;
 
+            RozpoznanieDataGrid.ItemsSource = null;
+            Rozpoznania = Data.GetRozpoznianie();
+            RozpoznanieDataGrid.ItemsSource = Rozpoznania;
         }
         }
     } 

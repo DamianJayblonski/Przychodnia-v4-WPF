@@ -27,7 +27,12 @@ namespace Przychodnia_v4
             using (var db = new PacjentContext())
             {
                 foreach (var rozpoznanie in db.Rozpoznanies)
-                { 
+                {
+                    foreach (var zabieg in db.RodzajZabiegus)
+                    {
+                        if (zabieg.ID == rozpoznanie.RodzajZabieguID)
+                            rozpoznanie.RodzajZabiegu.Nazwa = zabieg.Nazwa;
+                    }
                     list.Add(rozpoznanie);
                 }
                 return list;

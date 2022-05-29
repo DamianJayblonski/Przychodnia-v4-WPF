@@ -46,7 +46,7 @@
                                     Header="Nazwa" Width="150"/>
                 <DataGridTextColumn x:Name="RozpoznanieDataColumn" Binding="{Binding Data}"
                                     Header="Data" Width="100"/>
-                <DataGridTextColumn x:Name="RodzajZabieguIDColumn" Binding="{Binding RodzajZabieguID}"
+                <DataGridTextColumn x:Name="RodzajZabieguIDColumn" Binding="{Binding RodzajZabiegu.Nazwa}"
                                     Header="Nazwa Zabiegu" Width="100"/>
 
             </DataGrid.Columns>
