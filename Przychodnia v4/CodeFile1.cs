@@ -1,27 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using Przychodnia_v2;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
 
 namespace Przychodnia_v4
-{
-    public class Wizyta
-    {
-        public int ID { get; set; }
-        public string Nazwa { get; set; }
-        public DateTime Data { get; set; }
-        public int RodzajZabieguID { get; set; }
-        public int PacjentID { get; set; }
-        public string NazwaZabiegu { get; set; }
-  
-    }
-
-
-
-    /*
+{/*
     /// <summary>
     /// Logika interakcji dla klasy DodajEdytuj.xaml
     /// </summary>

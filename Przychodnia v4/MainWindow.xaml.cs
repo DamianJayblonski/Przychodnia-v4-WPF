@@ -23,9 +23,8 @@ namespace Przychodnia_v4
     public partial class MainWindow : Window
     {
         public Pacjent SelectedPacjent { get; set; }
-        public Rozpoznanie SelectedWizyta { get; set; }
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
-        public List<Wizyta> Rozpoznania { get; set; } = Data.GetRozpoznianie(0);
+        public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
         public List<Wypis> Wypisy { get; set; } = Data.GetWypis();
         public MainWindow()
         {
@@ -54,28 +53,32 @@ namespace Przychodnia_v4
 
             UsunWindow win2 = new UsunWindow(SelectedPacjent.ID, this);
             win2.Show();
-           
-        }
 
-        private void Dodaj_Wizyte_Button(object sender, RoutedEventArgs e)
-        {
-            DodajEdytujWizyty win2 = new DodajEdytujWizyty(0,SelectedPacjent.ID, this);
-            win2.Show();
 
-        }
-        private void Edytuj_Wizyte_Button(object sender, RoutedEventArgs e)
-        {
-            if (SelectedPacjent != null)
+
+
+
+
+            /* if (SelectedPacjent != null)
             {
-                DodajEdytujWizyty win2 = new DodajEdytujWizyty(SelectedWizyta.ID, SelectedPacjent.ID, this);
-                //  win2.parentWindow = this;
-                win2.Show();
-            }
+                using (var db = new PacjentContext())
+                {
+                    var Pacjent = db.Pacjents.Find(SelectedPacjent.ID);
+                    db.Pacjents.Remove(Pacjent);
+                    db.SaveChanges();
 
+
+                }
+
+
+
+                categoryDataGrid.ItemsSource = null;
+                Pacjenci = Data.GetPacjents();
+                categoryDataGrid.ItemsSource = Pacjenci;
+            } */
         }
 
-
-        private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {
                 RozpoznanieDataGrid.ItemsSource = null;
                 WypisDataGrid.ItemsSource = null;
@@ -85,19 +88,13 @@ namespace Przychodnia_v4
                     Wypisy.Clear();
                     using (var db = new PacjentContext())
                     {
-
-                    RozpoznanieDataGrid.ItemsSource = null;
-                    Rozpoznania = Data.GetRozpoznianie(SelectedPacjent.ID);
-                    RozpoznanieDataGrid.ItemsSource = Rozpoznania;
-
-                    /*foreach (var rozpoznanie in db.Rozpoznanies)
+                        foreach (var rozpoznanie in db.Rozpoznanies)
                         {
                             if (rozpoznanie.PacjentID == SelectedPacjent.ID)
                             {
-                                //Rozpoznania.Add(rozpoznanie);
+                                Rozpoznania.Add(rozpoznanie);
                             }
                         }
-                    */
                         foreach (var wypis in db.Wypiss)
                         {
                             if (wypis.PacjentID == SelectedPacjent.ID)
@@ -109,28 +106,14 @@ namespace Przychodnia_v4
                 }
                 RozpoznanieDataGrid.ItemsSource = Rozpoznania;
                 WypisDataGrid.ItemsSource = Wypisy;
+            // RozpoznanieDataGrid.Row.Clear();
         }
             public void Refresh()
-            {   
-                RozpoznanieDataGrid.ItemsSource = null;
-                Rozpoznania = Data.GetRozpoznianie(SelectedPacjent.ID);
-                RozpoznanieDataGrid.ItemsSource = Rozpoznania;
-
+            {
                 categoryDataGrid.ItemsSource = null;
                 Pacjenci = Data.GetPacjents();
                 categoryDataGrid.ItemsSource = Pacjenci;
-                
-                
-                
-                WypisDataGrid.ItemsSource = null;
-                Wypisy = Data.GetWypis();
-                WypisDataGrid.ItemsSource = Wypisy;
 
+            }
         }
-
-        private void RozpoznanieDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-    }
     } 

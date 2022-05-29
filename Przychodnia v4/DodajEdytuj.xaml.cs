@@ -100,7 +100,6 @@ namespace Przychodnia_v4
     
             Close();
 
-        
-    }
+        }
 }
 
