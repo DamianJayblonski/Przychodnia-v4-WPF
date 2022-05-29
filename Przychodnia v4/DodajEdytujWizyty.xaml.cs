@@ -31,8 +31,8 @@ namespace Przychodnia_v4
 
         public MainWindow parentWindow;
 
-        public DodajEdytujWizyty(int WizytaIDDJ,int PacjentIDDJ, MainWindow parent)
-        {
+        public DodajEdytujWizyty(int WizytaIDDJ, int PacjentIDDJ, MainWindow parent)
+        {   
             this.WizytaID = WizytaIDDJ;
             this.PacjentID = PacjentIDDJ;
             if (WizytaID > 0)
@@ -49,11 +49,13 @@ namespace Przychodnia_v4
         {
             using (var db = new PacjentContext())
             {
-                var SelectedWizyta = db.Rozpoznanies.Find(PacjentID);
+                var SelectedWizyta = db.Rozpoznanies.Find(WizytaID);
                 NazwaWizyty = SelectedWizyta.Nazwa;
                 ZabieguID = SelectedWizyta.RodzajZabieguID;
                 DataZabiegu = SelectedWizyta.Data;
-               
+                PacjentID = SelectedWizyta.PacjentID;
+
+
             }
 
         }
@@ -77,10 +79,11 @@ namespace Przychodnia_v4
                 {
                     db.Add(new Rozpoznanie()
                     {
+                        PacjentID = this.PacjentID,
                         Nazwa = this.NazwaWizyty,
                         RodzajZabieguID = 1, //this.ZabieguID,
-                        Data = this.DataZabiegu,
-                        PacjentID = this.PacjentID
+                        Data = this.DataZabiegu
+                       
                         
                     });
                     db.SaveChanges();

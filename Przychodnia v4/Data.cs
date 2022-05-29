@@ -27,7 +27,7 @@ namespace Przychodnia_v4
             using (var db = new PacjentContext())
             {
                 foreach (var rozpoznanie in db.Rozpoznanies)
-                {
+                { 
                     list.Add(rozpoznanie);
                 }
                 return list;

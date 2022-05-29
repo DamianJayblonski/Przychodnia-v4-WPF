@@ -23,6 +23,7 @@ namespace Przychodnia_v4
     public partial class MainWindow : Window
     {
         public Pacjent SelectedPacjent { get; set; }
+        public Rozpoznanie SelectedWizyta { get; set; }
         public List<Pacjent> Pacjenci { get; set; } = Data.GetPacjents();
         public List<Rozpoznanie> Rozpoznania { get; set; } = Data.GetRozpoznianie();
         public List<Wypis> Wypisy { get; set; } = Data.GetWypis();
@@ -38,11 +39,30 @@ namespace Przychodnia_v4
             win2.Show();
 
         }
+        private void Dodaj_Wizyte_Button(object sender, RoutedEventArgs e)
+        {
+            if(SelectedPacjent != null)     
+            { 
+            DodajEdytujWizyty win2 = new DodajEdytujWizyty(0,0, this);
+            win2.parentWindow = this;
+            win2.Show();
+            }
+        }
         private void Edytuj_Button(object sender, RoutedEventArgs e)
         {
             if (SelectedPacjent != null)
             {
                 DodajEdytuj win2 = new DodajEdytuj(SelectedPacjent.ID, this);
+                win2.parentWindow = this;
+                win2.Show();
+            }
+
+        }
+        private void Edytuj_Wizyte_Button(object sender, RoutedEventArgs e)
+        {
+            if (SelectedWizyta != null)
+            {
+                DodajEdytujWizyty win2 = new DodajEdytujWizyty(SelectedWizyta.ID, SelectedWizyta.PacjentID, this);
                 //  win2.parentWindow = this;
                 win2.Show();
             }
@@ -53,29 +73,6 @@ namespace Przychodnia_v4
 
             UsunWindow win2 = new UsunWindow(SelectedPacjent.ID, this);
             win2.Show();
-
-
-
-
-
-
-            /* if (SelectedPacjent != null)
-            {
-                using (var db = new PacjentContext())
-                {
-                    var Pacjent = db.Pacjents.Find(SelectedPacjent.ID);
-                    db.Pacjents.Remove(Pacjent);
-                    db.SaveChanges();
-
-
-                }
-
-
-
-                categoryDataGrid.ItemsSource = null;
-                Pacjenci = Data.GetPacjents();
-                categoryDataGrid.ItemsSource = Pacjenci;
-            } */
         }
 
             private void Pacjent_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,13 +104,24 @@ namespace Przychodnia_v4
                 RozpoznanieDataGrid.ItemsSource = Rozpoznania;
                 WypisDataGrid.ItemsSource = Wypisy;
             // RozpoznanieDataGrid.Row.Clear();
-        }
-            public void Refresh()
-            {
-                categoryDataGrid.ItemsSource = null;
-                Pacjenci = Data.GetPacjents();
-                categoryDataGrid.ItemsSource = Pacjenci;
-
             }
+
+        public void Refresh()
+            {
+            RozpoznanieDataGrid.ItemsSource = null;
+            Rozpoznania = Data.GetRozpoznianie();
+            RozpoznanieDataGrid.ItemsSource = Rozpoznania;
+
+            categoryDataGrid.ItemsSource = null;
+            Pacjenci = Data.GetPacjents();
+            categoryDataGrid.ItemsSource = Pacjenci;
+
+
+
+            WypisDataGrid.ItemsSource = null;
+            Wypisy = Data.GetWypis();
+            WypisDataGrid.ItemsSource = Wypisy;
+
+        }
         }
     } 
