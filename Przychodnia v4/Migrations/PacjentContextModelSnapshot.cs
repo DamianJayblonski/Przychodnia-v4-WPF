@@ -24,26 +24,21 @@ namespace Przychodnia_v4.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Adres")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DataUrodzenia")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Imie")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nazwisko")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Pesel")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Plec")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
@@ -58,11 +53,9 @@ namespace Przychodnia_v4.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nazwa")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Numer")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
@@ -80,7 +73,6 @@ namespace Przychodnia_v4.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nazwa")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PacjentID")
@@ -117,7 +109,6 @@ namespace Przychodnia_v4.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Rezultat")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");

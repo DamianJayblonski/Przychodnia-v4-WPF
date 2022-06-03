@@ -19,7 +19,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="26,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Wizyty"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="26,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="pl-pl" Text="Pacjenci"/></TextBlock>
         <DataGrid x:Name="categoryDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" SelectionChanged="Pacjent_SelectionChanged"
-                    ItemsSource="{Binding Pacjenci , Mode=TwoWay}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,59,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="112">
+                    ItemsSource="{Binding Pacjenci , Mode=TwoWay}" SelectedItem="{Binding SelectedPacjent, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,59,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="112" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="IdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
@@ -38,7 +38,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="RozpoznanieDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
-                    ItemsSource="{Binding Rozpoznania , Mode=TwoWay}" SelectedItem="{Binding SelectedWizyta, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,217,400,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
+                    ItemsSource="{Binding Rozpoznania , Mode=TwoWay}" SelectedItem="{Binding SelectedWizyta, Mode=TwoWay}" VerticalAlignment="Top" Margin="26,217,400,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="RozpoznanieIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>
@@ -52,7 +52,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="WypisDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True"
-                    ItemsSource="{Binding Wypisy}" SelectedItem="{Binding SelectedHistoria, Mode=TwoWay}" VerticalAlignment="Top" Margin="419,217,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173">
+                    ItemsSource="{Binding Wypisy}" SelectedItem="{Binding SelectedHistoria, Mode=TwoWay}" VerticalAlignment="Top" Margin="419,217,26,0" RowDetailsVisibilityMode="VisibleWhenSelected" Height="173" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="WypisIdColumn" Binding="{Binding ID}"
                                     Header="Id" Width="25"/>

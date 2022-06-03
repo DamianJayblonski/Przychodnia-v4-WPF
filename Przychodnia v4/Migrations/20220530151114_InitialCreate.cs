@@ -15,11 +15,11 @@ namespace Przychodnia_v4.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Imie = table.Column<string>(type: "TEXT", nullable: false),
-                    Nazwisko = table.Column<string>(type: "TEXT", nullable: false),
-                    Adres = table.Column<string>(type: "TEXT", nullable: false),
-                    Pesel = table.Column<string>(type: "TEXT", nullable: false),
-                    Plec = table.Column<string>(type: "TEXT", nullable: false),
+                    Imie = table.Column<string>(type: "TEXT", nullable: true),
+                    Nazwisko = table.Column<string>(type: "TEXT", nullable: true),
+                    Adres = table.Column<string>(type: "TEXT", nullable: true),
+                    Pesel = table.Column<string>(type: "TEXT", nullable: true),
+                    Plec = table.Column<string>(type: "TEXT", nullable: true),
                     DataUrodzenia = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
@@ -33,8 +33,8 @@ namespace Przychodnia_v4.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nazwa = table.Column<string>(type: "TEXT", nullable: false),
-                    Numer = table.Column<string>(type: "TEXT", nullable: false)
+                    Nazwa = table.Column<string>(type: "TEXT", nullable: true),
+                    Numer = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,7 +47,7 @@ namespace Przychodnia_v4.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Rezultat = table.Column<string>(type: "TEXT", nullable: false),
+                    Rezultat = table.Column<string>(type: "TEXT", nullable: true),
                     DataWypisu = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DataLeczeniaOd = table.Column<DateTime>(type: "TEXT", nullable: false),
                     DataLeczeniaDo = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -70,7 +70,7 @@ namespace Przychodnia_v4.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nazwa = table.Column<string>(type: "TEXT", nullable: false),
+                    Nazwa = table.Column<string>(type: "TEXT", nullable: true),
                     Data = table.Column<DateTime>(type: "TEXT", nullable: false),
                     RodzajZabieguID = table.Column<int>(type: "INTEGER", nullable: false),
                     PacjentID = table.Column<int>(type: "INTEGER", nullable: false)

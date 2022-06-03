@@ -139,7 +139,9 @@ namespace Przychodnia_v4
                 WypisDataGrid.ItemsSource = Wypisy;
             
             }
-        //Odświeżanie całej strony
+     /// <summary>
+     /// odświeża całą tablice
+     /// </summary>
         public void Refresh()
             {
             

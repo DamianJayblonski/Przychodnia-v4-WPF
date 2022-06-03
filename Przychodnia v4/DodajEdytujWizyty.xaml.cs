@@ -18,7 +18,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Przychodnia_v4
 {
-    //deklaracja zmiennych
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class DodajEdytujWizyty : Window
     {
         public int PacjentID { get; set; }
